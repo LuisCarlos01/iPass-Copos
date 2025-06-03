@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fontes do Google */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Reset e configurações base */
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply antialiased text-gray-900 bg-gray-50;
+  }
+  
+  /* Scrollbar personalizada */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400;
+  }
+}
+
+/* Componentes personalizados */
+@layer components {
+  .container-app {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .gradient-bg {
+    background: linear-gradient(135deg, theme('colors.primary.50') 0%, theme('colors.secondary.50') 50%, theme('colors.accent.50') 100%);
+  }
+  
+  /* Estados de loading */
+  .loading-dots {
+    @apply inline-flex space-x-1;
+  }
+  
+  .loading-dots span {
+    @apply w-2 h-2 bg-current rounded-full animate-pulse;
+    animation-delay: calc(var(--i) * 0.2s);
+  }
+  
+  /* Animações personalizadas */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  .animate-pulse-soft {
+    animation: pulseSoft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  /* Efeitos de hover suaves */
+  .hover-lift {
+    @apply transition-transform duration-200 ease-in-out;
+  }
+  
+  .hover-lift:hover {
+    @apply -translate-y-1;
+  }
+}
+
+/* Utilities personalizadas */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .bg-pattern {
+    background-image: radial-gradient(circle at 25% 25%, theme('colors.primary.100') 0%, transparent 50%),
+                      radial-gradient(circle at 75% 75%, theme('colors.secondary.100') 0%, transparent 50%);
+  }
+  
+  /* Utilitários para QR Code */
+  .qr-container {
+    @apply bg-white p-4 rounded-xl shadow-lg border-2 border-gray-100;
+  }
+  
+  /* Utilitários para status */
+  .status-success {
+    @apply bg-green-50 border-green-200 text-green-800;
+  }
+  
+  .status-warning {
+    @apply bg-yellow-50 border-yellow-200 text-yellow-800;
+  }
+  
+  .status-error {
+    @apply bg-red-50 border-red-200 text-red-800;
+  }
+  
+  .status-info {
+    @apply bg-blue-50 border-blue-200 text-blue-800;
+  }
+} 
