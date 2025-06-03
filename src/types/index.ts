@@ -2,6 +2,7 @@
 
 export interface User {
   cpf: string;
+  name?: string;
   isValid: boolean;
   hasTicket?: boolean;
 }

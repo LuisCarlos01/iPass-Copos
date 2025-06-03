@@ -1,242 +1,436 @@
 # 🎪 iPass Copos - STL Festival 2025
 
-Sistema de venda de copos oficiais do STL Festival 2025 com verificação por CPF e pagamento via Pix.
+![Version](https://img.shields.io/badge/version-1.1.0-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
+
+## 📋 **Índice**
+
+- [Visão Geral](#-visão-geral)
+- [Funcionalidades](#-funcionalidades)
+- [Tecnologias](#-tecnologias)
+- [Instalação](#-instalação)
+- [Estrutura do Projeto](#-estrutura-do-projeto)
+- [Componentes](#-componentes)
+- [Fluxo da Aplicação](#-fluxo-da-aplicação)
+- [Design System](#-design-system)
+- [Screenshots](#-screenshots)
+- [Deploy](#-deploy)
+- [Contribuição](#-contribuição)
 
 ## 🎯 **Visão Geral**
 
-O **iPass Copos** é uma aplicação web desenvolvida para facilitar a venda do copo oficial do STL Festival 2025. O sistema permite que portadores de ingresso adquiram o copo de forma digital, sem filas e com verificação simples por CPF.
+O **iPass Copos** é uma aplicação web moderna desenvolvida para o **STL Festival 2025**, permitindo que portadores de ingresso adquiram o copo oficial do festival de forma digital, sem filas e com experiência premium.
 
-### ✨ **Funcionalidades Principais**
+### ✨ **Diferenciais**
 
-- 🔐 **Login por CPF** - Verificação simples sem senha
-- 🏆 **Seleção do Copo** - Produto único com opções de quantidade
-- 💳 **Pagamento via Pix** - QR Code gerado automaticamente
-- ✅ **Confirmação** - Redirecionamento para o app iPass
+- 🚀 **Performance otimizada** com Next.js 14
+- 🎨 **Design moderno** com Tailwind CSS e efeitos avançados
+- 📱 **Mobile-first** e totalmente responsivo
+- 🔐 **Segurança** com validação rigorosa de CPF
+- ⚡ **Experiência fluida** com loading states e animações
 
-## 🏗️ **Arquitetura**
+## 🚀 **Funcionalidades**
 
-### **Stack Tecnológica**
+### 🔐 **Sistema de Autenticação**
+- ✅ Login seguro apenas com CPF
+- ✅ Validação de dígitos verificadores
+- ✅ Formatação automática (000.000.000-00)
+- ✅ Verificação de ingresso no banco de dados
 
-- **Frontend**: React 18 + TypeScript
-- **Framework**: Next.js 14 (App Router)
-- **Estilização**: Tailwind CSS
-- **Formulários**: React Hook Form
-- **Validação**: Validação de CPF nativa
-- **QR Code**: qrcode library
-- **Backend**: Será desenvolvido pela Scooder
-- **Banco de Dados**: MongoDB (Scooder)
+### 🏆 **Seleção de Produto**
+- ✅ Visualização do copo oficial STL 2025
+- ✅ Imagem real do produto com efeitos 3D
+- ✅ Controle de quantidade (máximo 5 por CPF)
+- ✅ Cálculo automático de total
 
-### **Estrutura do Projeto**
+### 💳 **Sistema de Pagamento**
+- ✅ Integração com Pix
+- ✅ QR Code gerado automaticamente
+- ✅ Cálculo de preços em tempo real
+- ✅ Confirmação de pagamento
 
-```
-ipass-copos/
-├── app/                    # App Router do Next.js
-│   ├── layout.tsx         # Layout principal
-│   └── page.tsx           # Página inicial
-├── src/
-│   ├── components/        # Componentes React
-│   │   ├── ui/           # Componentes base (Button, Input, Card)
-│   │   └── screens/      # Telas da aplicação
-│   ├── hooks/            # Hooks customizados
-│   ├── utils/            # Utilitários (CPF, moeda, etc.)
-│   ├── types/            # Tipos TypeScript
-│   └── styles/           # Estilos globais
-├── public/               # Arquivos estáticos
-└── docs/                 # Documentação
-```
+### 🎨 **Interface Premium**
+- ✅ Efeitos de hover e animações suaves
+- ✅ Background patterns dinâmicos
+- ✅ Componentes com glassmorphism
+- ✅ Feedback visual em todas as interações
 
-## 🚀 **Instalação e Execução**
+## 🛠️ **Tecnologias**
+
+### **Core**
+- **[Next.js 14](https://nextjs.org/)** - Framework React com App Router
+- **[React 18](https://reactjs.org/)** - Biblioteca de interfaces
+- **[TypeScript](https://www.typescriptlang.org/)** - Tipagem estática
+- **[Tailwind CSS](https://tailwindcss.com/)** - Framework CSS utility-first
+
+### **Formulários & Validação**
+- **[React Hook Form](https://react-hook-form.com/)** - Gerenciamento de formulários
+- **Validação de CPF** - Algoritmo nativo brasileiro
+
+### **UI & UX**
+- **[Lucide React](https://lucide.dev/)** - Ícones modernos
+- **[clsx](https://github.com/lukeed/clsx)** - Utilitário para classes CSS
+- **[tailwind-merge](https://github.com/dcastil/tailwind-merge)** - Merge inteligente de classes
+
+### **Desenvolvimento**
+- **[ESLint](https://eslint.org/)** - Linting de código
+- **[Prettier](https://prettier.io/)** - Formatação automática
+- **[PostCSS](https://postcss.org/)** - Processamento CSS
+- **[@tailwindcss/forms](https://github.com/tailwindlabs/tailwindcss-forms)** - Estilos para formulários
+
+## 🚀 **Instalação**
 
 ### **Pré-requisitos**
+- **Node.js** 18.0.0 ou superior
+- **npm** ou **yarn**
+- **Git**
 
-- Node.js 18+ 
-- npm ou yarn
-
-### **Instalação**
+### **Configuração Local**
 
 ```bash
-# Clone o repositório
-git clone https://github.com/seu-usuario/ipass-copos.git
-cd ipass-copos
+# 1. Clone o repositório
+git clone https://github.com/seu-usuario/iPass-Copos.git
+cd iPass-Copos
 
-# Instale as dependências
+# 2. Instale as dependências
 npm install
 
-# Execute em modo de desenvolvimento
+# 3. Execute em modo de desenvolvimento
 npm run dev
+
+# 4. Abra no navegador
+http://localhost:3000
 ```
 
 ### **Scripts Disponíveis**
 
 ```bash
-npm run dev        # Desenvolvimento
+npm run dev        # Servidor de desenvolvimento
 npm run build      # Build para produção
-npm run start      # Execução em produção
+npm run start      # Servidor de produção
 npm run lint       # Verificação de código
-npm run lint:fix   # Correção automática
-npm run type-check # Verificação de tipos
+npm run lint:fix   # Correção automática de lint
+npm run type-check # Verificação de tipos TypeScript
 ```
 
-## 🎨 **Design System**
+## 📁 **Estrutura do Projeto**
 
-### **Cores**
+```
+ipass-copos/
+├── 📁 app/                    # App Router do Next.js
+│   ├── 📄 layout.tsx         # Layout global da aplicação
+│   ├── 📄 page.tsx           # Página inicial (redirecionamento)
+│   └── 📄 globals.css        # Estilos globais
+│
+├── 📁 src/                    # Código fonte principal
+│   ├── 📁 components/        # Componentes React
+│   │   ├── 📁 ui/           # Componentes de interface base
+│   │   │   ├── 📄 Button.tsx      # Botão reutilizável
+│   │   │   ├── 📄 Card.tsx        # Container de conteúdo
+│   │   │   ├── 📄 Input.tsx       # Campo de entrada
+│   │   │   ├── 📄 Navbar.tsx      # Barra de navegação
+│   │   │   └── 📄 Footer.tsx      # Rodapé
+│   │   └── 📁 screens/      # Telas da aplicação
+│   │       ├── 📄 LoginScreen.tsx       # Tela de login
+│   │       └── 📄 CupSelectionScreen.tsx # Tela de seleção
+│   │
+│   ├── 📁 hooks/             # Hooks customizados
+│   │   └── 📄 useLocalStorage.ts
+│   │
+│   ├── 📁 services/          # Serviços e APIs
+│   │   └── 📄 userService.ts       # Validação de usuários
+│   │
+│   ├── 📁 types/             # Definições TypeScript
+│   │   └── 📄 index.ts             # Tipos da aplicação
+│   │
+│   ├── 📁 utils/             # Funções utilitárias
+│   │   ├── 📄 cpf.ts              # Validação/formatação CPF
+│   │   ├── 📄 currency.ts         # Formatação de moeda
+│   │   └── 📄 cn.ts               # Utilitário para classes CSS
+│   │
+│   └── 📁 styles/            # Estilos adicionais
+│       └── 📄 globals.css         # CSS global customizado
+│
+├── 📁 public/                # Arquivos estáticos
+│   ├── 🖼️ Ipass_logo.png           # Logo principal
+│   ├── 🖼️ ipass-logo.png           # Logo navbar
+│   ├── 🖼️ ipass_logo_rodape_negativa.png # Logo footer
+│   └── 🖼️ WhatsApp Image 2025-06-03... # Imagem do copo
+│
+├── 📄 package.json           # Dependências e scripts
+├── 📄 tsconfig.json          # Configuração TypeScript
+├── 📄 tailwind.config.js     # Configuração Tailwind
+├── 📄 next.config.js         # Configuração Next.js
+├── 📄 .eslintrc.json         # Configuração ESLint
+└── 📄 README.md              # Documentação principal
+```
 
-- **Primary**: Azul (#2563eb) - Ações principais
-- **Secondary**: Verde (#16a34a) - Confirmações
-- **Accent**: Amarelo (#eab308) - Destaques
+## 🧩 **Componentes**
 
-### **Componentes**
+### **📱 Telas (Screens)**
 
-- **Button**: Variações (primary, secondary, outline, ghost)
-- **Input**: Com validação e estados de erro
-- **Card**: Container flexível para conteúdo
+#### `LoginScreen.tsx`
+- **Função**: Autenticação por CPF
+- **Recursos**: Validação em tempo real, animações, logos interativas
+- **Validação**: Dígitos verificadores do CPF brasileiro
+
+#### `CupSelectionScreen.tsx`
+- **Função**: Seleção e compra do copo
+- **Recursos**: Imagem 3D, efeitos hover, controle de quantidade
+- **Produto**: Copo oficial STL Festival 2025
+
+### **🎨 Interface (UI)**
+
+#### `Button.tsx`
+```typescript
+// Variações disponíveis
+variant: 'default' | 'secondary' | 'outline' | 'ghost'
+size: 'sm' | 'default' | 'lg'
+loading: boolean
+```
+
+#### `Card.tsx`
+```typescript
+// Container flexível para conteúdo
+variant: 'default' | 'elevated'
+className: string
+```
+
+#### `Navbar.tsx`
+```typescript
+// Barra de navegação funcional
+userName?: string
+isLoggedIn: boolean
+```
+
+### **🔧 Utilitários**
+
+#### `cpf.ts`
+- `validateCpf()` - Validação completa de CPF
+- `maskCpf()` - Formatação automática
+- `cleanCpf()` - Remoção de caracteres especiais
+
+#### `currency.ts`
+- `formatCurrency()` - Formatação para Real brasileiro (R$)
 
 ## 🔄 **Fluxo da Aplicação**
 
 ```mermaid
 graph TD
-    A[Login com CPF] --> B{CPF Válido?}
-    B -->|Não| A
-    B -->|Sim| C[Verificar Ingresso]
-    C --> D{Tem Ingresso?}
-    D -->|Não| E[Erro: Sem Ingresso]
-    D -->|Sim| F[Seleção do Copo]
-    F --> G[Escolher Quantidade]
-    G --> H[Pagamento via Pix]
-    H --> I[QR Code Gerado]
-    I --> J[Confirmação]
-    J --> K[Redirecionamento iPass]
+    A[🏠 Página Inicial] --> B[🔐 Tela de Login]
+    B --> C{📝 CPF Válido?}
+    C -->|❌ Não| D[⚠️ Erro de Validação]
+    D --> B
+    C -->|✅ Sim| E[🔍 Verificar no Banco]
+    E --> F{🎫 Tem Ingresso?}
+    F -->|❌ Não| G[❌ CPF não encontrado]
+    G --> B
+    F -->|✅ Sim| H[🏆 Tela de Seleção]
+    H --> I[📊 Escolher Quantidade]
+    I --> J[💰 Calcular Total]
+    J --> K[💳 Botão Finalizar Compra]
+    K --> L[🔄 Processando...]
+    L --> M[✅ Sucesso]
+    M --> N[📱 Redirecionamento iPass]
 ```
 
-## 🧪 **Validações**
+## 🎨 **Design System**
 
-### **CPF**
-- Algoritmo oficial de validação
-- Formatação automática (000.000.000-00)
-- Verificação de dígitos verificadores
+### **🎯 Cores Principais**
 
-### **Formulários**
-- Validação em tempo real
-- Mensagens de erro contextuais
-- Estados de loading
+```css
+/* Paleta iPass */
+--ipass-primary: #02AB89;     /* Verde principal */
+--primary-600: #059669;       /* Verde escuro */
+--primary-500: #10b981;       /* Verde médio */
+--primary-400: #34d399;       /* Verde claro */
 
-## 🔗 **Integração com Backend**
-
-> **Nota**: O backend será desenvolvido pela equipe Scooder
-
-### **Endpoints Esperados**
-
-```typescript
-// Verificação de CPF e ingresso
-POST /api/auth/verify-cpf
-{
-  "cpf": "12345678901"
-}
-
-// Criação de pedido
-POST /api/orders
-{
-  "userId": "cpf",
-  "cupId": "stl-2025-official-cup",
-  "quantity": 1
-}
-
-// Geração de Pix
-POST /api/payments/pix
-{
-  "orderId": "order-id",
-  "amount": 2500 // em centavos
-}
+/* Cores de apoio */
+--ipass-background: #f8fafc;  /* Fundo principal */
+--accent-100: #f3f4f6;        /* Cinza claro */
+--accent-600: #4b5563;        /* Cinza escuro */
 ```
 
-## 📱 **Responsividade**
+### **📐 Espaçamentos**
 
-- **Mobile First**: Otimizado para dispositivos móveis
-- **Breakpoints**: sm (640px), md (768px), lg (1024px)
-- **Touch Friendly**: Botões e áreas de toque adequadas
+```css
+/* Sistema de espaçamento 8px */
+space-1: 0.25rem;  /* 4px */
+space-2: 0.5rem;   /* 8px */
+space-4: 1rem;     /* 16px */
+space-6: 1.5rem;   /* 24px */
+space-8: 2rem;     /* 32px */
+```
 
-## 🔒 **Segurança**
+### **🔤 Tipografia**
 
-- Validação de CPF no frontend e backend
-- Não armazenamento de dados sensíveis
-- Headers de segurança configurados
-- Prevenção de zoom em iOS
+```css
+/* Hierarquia de texto */
+text-3xl: 1.875rem;    /* Títulos principais */
+text-xl: 1.25rem;      /* Subtítulos */
+text-sm: 0.875rem;     /* Texto auxiliar */
+text-xs: 0.75rem;      /* Legendas */
+```
+
+### **✨ Efeitos Visuais**
+
+- **Glassmorphism**: `backdrop-blur-sm` + `bg-white/90`
+- **Gradientes**: `bg-gradient-to-r from-ipass-primary to-primary-600`
+- **Sombras**: `shadow-xl`, `drop-shadow-2xl`
+- **Animações**: `transition-all duration-500`
+
+## 📸 **Screenshots**
+
+### 🔐 **Tela de Login**
+- ✅ Design moderno com logo animada
+- ✅ Campo CPF com validação visual
+- ✅ Seção informativa sobre STL Festival
+- ✅ Links para termos e políticas
+
+### 🏆 **Tela de Seleção**
+- ✅ Imagem real do copo com efeitos 3D
+- ✅ Badge "Edição Limitada STL" sobre a imagem
+- ✅ Controle de quantidade intuitivo
+- ✅ Informações organizadas em grid
 
 ## 🚀 **Deploy**
 
 ### **Vercel (Recomendado)**
 
 ```bash
-# Instalar Vercel CLI
+# 1. Instalar Vercel CLI
 npm i -g vercel
 
-# Deploy
+# 2. Login na Vercel
+vercel login
+
+# 3. Deploy
 vercel --prod
 ```
 
-### **Outras Plataformas**
+### **Outras Opções**
 
 - **Netlify**: Suporte nativo ao Next.js
-- **AWS Amplify**: Deploy automático
-- **Docker**: Dockerfile incluído
+- **AWS Amplify**: Deploy automático via Git
+- **Digital Ocean**: App Platform
 
-## 🧑‍💻 **Desenvolvimento**
+### **Variáveis de Ambiente**
 
-### **Padrões de Código**
+```env
+# Produção
+NEXT_PUBLIC_APP_URL=https://ipass-copos.vercel.app
+NEXT_PUBLIC_API_URL=https://api.scooder.com.br
 
-- **ESLint**: Configuração Next.js + TypeScript
-- **Prettier**: Formatação automática
-- **Conventional Commits**: Padrão de commits
-- **TypeScript Strict**: Tipagem rigorosa
-
-### **Estrutura de Componentes**
-
-```typescript
-// Exemplo de componente
-interface ComponentProps {
-  // Props tipadas
-}
-
-export function Component({ ...props }: ComponentProps) {
-  // Lógica do componente
-  return (
-    // JSX
-  );
-}
+# Desenvolvimento
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+NEXT_PUBLIC_API_URL=http://localhost:3001
 ```
 
 ## 📊 **Performance**
 
-- **Core Web Vitals**: Otimizado para métricas do Google
-- **Bundle Size**: Minimizado com tree-shaking
-- **Images**: Otimização automática do Next.js
-- **Fonts**: Carregamento otimizado
+### **Core Web Vitals**
+- ✅ **LCP**: < 2.5s (Largest Contentful Paint)
+- ✅ **FID**: < 100ms (First Input Delay)
+- ✅ **CLS**: < 0.1 (Cumulative Layout Shift)
+
+### **Otimizações**
+- ✅ **Bundle splitting** automático do Next.js
+- ✅ **Image optimization** para logos e fotos
+- ✅ **CSS purging** com Tailwind CSS
+- ✅ **Tree shaking** para reduzir tamanho
+
+## 🧪 **Dados de Teste**
+
+### **CPFs Válidos para Desenvolvimento**
+
+```typescript
+// userService.ts - Mock database
+'12345678909': { name: 'João Silva', hasTicket: true }
+'98765432100': { name: 'Maria Santos', hasTicket: true }
+'11144477735': { name: 'Pedro Oliveira', hasTicket: true }
+'00000000191': { name: 'Ana Costa', hasTicket: true }
+```
+
+### **Preços**
+- **Copo STL 2025**: R$ 20,00 por unidade
+- **Máximo por CPF**: 5 unidades
+- **Total máximo**: R$ 100,00
 
 ## 🤝 **Contribuição**
 
-1. Fork o projeto
-2. Crie uma branch (`git checkout -b feature/nova-funcionalidade`)
-3. Commit suas mudanças (`git commit -m 'feat: adiciona nova funcionalidade'`)
-4. Push para a branch (`git push origin feature/nova-funcionalidade`)
-5. Abra um Pull Request
+### **Padrões de Commit**
+
+```bash
+feat: adiciona nova funcionalidade
+fix: corrige bug existente
+docs: atualiza documentação
+style: mudanças de formatação
+refactor: refatoração de código
+test: adiciona ou modifica testes
+chore: tarefas de manutenção
+```
+
+### **Fluxo de Contribuição**
+
+1. **Fork** do repositório
+2. **Clone** local: `git clone <fork-url>`
+3. **Branch**: `git checkout -b feature/nova-funcionalidade`
+4. **Commit**: `git commit -m "feat: adiciona nova funcionalidade"`
+5. **Push**: `git push origin feature/nova-funcionalidade`
+6. **Pull Request** no GitHub
 
 ## 📄 **Licença**
 
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para detalhes.
+Este projeto está sob a licença **MIT**. Consulte o arquivo [LICENSE](LICENSE) para detalhes.
 
 ## 👥 **Equipe**
 
-- **Frontend**: Sua equipe
-- **Backend & Integração**: Scooder
-- **Design**: STL Festival Team
+### **Desenvolvimento Frontend**
+- 🎨 **Interface & UX**: Equipe Frontend
+- ⚡ **Performance**: Otimizações avançadas
+- 📱 **Responsividade**: Mobile-first approach
+
+### **Integrações**
+- 🔗 **Backend**: Scooder (API REST)
+- 💳 **Pagamentos**: Sistema Pix integrado
+- 📊 **Analytics**: Métricas de conversão
+
+### **Design & Branding**
+- 🎪 **STL Festival**: Identidade visual oficial
+- 🧙‍♂️ **Mascote**: Gnomo STL integrado
+- 🎨 **UI/UX**: Design system consistente
 
 ## 📞 **Suporte**
 
-Para dúvidas ou suporte:
-- 📧 Email: suporte@stlfestival.com
-- 💬 Slack: #ipass-copos
-- 📱 WhatsApp: (11) 99999-9999
+### **Contatos Oficiais**
+- 🌐 **Site**: [ipass.com.br](https://ipass.com.br)
+- 📧 **Email**: contato@ipass.com.br
+- 📱 **Telefone**: (35) xxxx-xxxx
+
+### **Redes Sociais**
+- 📷 **Instagram**: [@ipassbrasil](https://www.instagram.com/ipassbrasil/)
+- 💼 **LinkedIn**: [iPass Company](https://linkedin.com/company/ipass)
+- 👥 **Facebook**: [iPass Official](https://facebook.com/ipass)
+
+### **Links Úteis**
+- 📋 **Documentação**: [Guia Completo](https://ipass.com.br/quem-somos)
+- 🤝 **Fale Conosco**: [Suporte](https://ipass.com.br/fale-conosco)
+- 📜 **Termos**: [Termos de Uso](https://ipass.com.br/termos-de-uso)
+- 🛡️ **Privacidade**: [Política](https://ipass.com.br/politica-de-privacidade)
 
 ---
 
-**STL Festival 2025** - Transformando experiências através da tecnologia 🎪✨
+<div align="center">
+
+**🎪 STL Festival 2025 - Transformando experiências através da tecnologia**
+
+[![Versão](https://img.shields.io/badge/Versão-1.1.0-success)](https://github.com/seu-usuario/iPass-Copos)
+[![Status](https://img.shields.io/badge/Status-Ativo-brightgreen)](https://github.com/seu-usuario/iPass-Copos)
+[![Licença](https://img.shields.io/badge/Licença-MIT-blue)](LICENSE)
+
+*Desenvolvido com ❤️ para o maior festival da região*
+
+</div>
