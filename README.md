@@ -11,6 +11,7 @@
 - [Visão Geral](#-visão-geral)
 - [Funcionalidades](#-funcionalidades)
 - [Tecnologias](#-tecnologias)
+- [Melhorias Recentes](#-melhorias-recentes)
 - [Instalação](#-instalação)
 - [Estrutura do Projeto](#-estrutura-do-projeto)
 - [Componentes](#-componentes)
@@ -26,11 +27,13 @@ O **iPass Copos** é uma aplicação web moderna desenvolvida para o **STL Festi
 
 ### ✨ **Diferenciais**
 
-- 🚀 **Performance otimizada** com Next.js 14
+- 🚀 **Performance otimizada** com Next.js 14 e Image optimization
 - 🎨 **Design moderno** com Tailwind CSS e efeitos avançados
 - 📱 **Mobile-first** e totalmente responsivo
 - 🔐 **Segurança** com validação rigorosa de CPF
 - ⚡ **Experiência fluida** com loading states e animações
+- 🧹 **Código limpo** seguindo melhores práticas de engenharia
+- 🛡️ **Type safety** com TypeScript rigoroso
 
 ## 🚀 **Funcionalidades**
 
@@ -61,16 +64,45 @@ O **iPass Copos** é uma aplicação web moderna desenvolvida para o **STL Festi
 - ✅ **Partículas flutuantes** com animações CSS personalizadas
 - ✅ **Reflexo dinâmico** sincronizado com imagem atual
 - ✅ **Bordas orgânicas** com `rounded-3xl` e moldura premium
+- ✅ **Otimização de imagens** com Next.js Image para melhor performance
 - ✅ Background patterns dinâmicos
 - ✅ Componentes com glassmorphism
 - ✅ Feedback visual em todas as interações
+- ✅ **Interface limpa** sem elementos de debug em produção
+
+## 🔧 **Melhorias Recentes**
+
+### **🚀 v1.3.0 - Performance & Quality Update**
+
+#### **⚡ Otimizações de Performance**
+- 🖼️ **Migração para Next.js Image**: Substituição de todas as tags `<img>` por `<Image>`
+- 📈 **LCP otimizado**: Melhoria no Largest Contentful Paint
+- 📉 **Bandwidth reduzido**: Otimização automática de imagens
+- 🏃‍♂️ **Loading prioritário**: Configuração de `priority` para imagens críticas
+
+#### **🛠️ Melhorias de Código**
+- 🔍 **Type Safety**: Substituição de `any` por `unknown` para maior segurança
+- 🧹 **Código limpo**: Remoção de `console.log` e elementos de debug
+- 📝 **Documentação**: TODOs estruturados para futuras implementações
+- ✨ **ESLint zero warnings**: Código completamente livre de avisos
+
+#### **🎨 Refinamentos de UX**
+- 🧹 **Interface limpa**: Remoção de informações de debug do usuário final
+- 📱 **Layout otimizado**: Espaçamentos refinados na tela de seleção
+- 🎯 **Foco no produto**: Interface minimalista focada na conversão
+
+#### **📊 Qualidade Técnica**
+- ✅ **100% TypeScript**: Tipagem rigorosa em todo o projeto
+- ✅ **Conventional Commits**: Histórico de commits organizados
+- ✅ **Best Practices**: Seguindo padrões de engenharia de software
+- ✅ **Build otimizado**: Compilação limpa sem warnings
 
 ## 🛠️ **Tecnologias**
 
 ### **Core**
-- **[Next.js 14](https://nextjs.org/)** - Framework React com App Router
+- **[Next.js 14](https://nextjs.org/)** - Framework React com App Router e Image optimization
 - **[React 18](https://reactjs.org/)** - Biblioteca de interfaces
-- **[TypeScript](https://www.typescriptlang.org/)** - Tipagem estática
+- **[TypeScript](https://www.typescriptlang.org/)** - Tipagem estática rigorosa
 - **[Tailwind CSS](https://tailwindcss.com/)** - Framework CSS utility-first
 
 ### **Formulários & Validação**
@@ -129,7 +161,7 @@ npm run type-check # Verificação de tipos TypeScript
 ipass-copos/
 ├── 📁 app/                    # App Router do Next.js
 │   ├── 📄 layout.tsx         # Layout global da aplicação
-│   ├── 📄 page.tsx           # Página inicial (redirecionamento)
+│   ├── 📄 page.tsx           # Página inicial (sem debug info)
 │   └── 📄 globals.css        # Estilos globais
 │
 ├── 📁 src/                    # Código fonte principal
@@ -138,20 +170,20 @@ ipass-copos/
 │   │   │   ├── 📄 Button.tsx      # Botão reutilizável
 │   │   │   ├── 📄 Card.tsx        # Container de conteúdo
 │   │   │   ├── 📄 Input.tsx       # Campo de entrada
-│   │   │   ├── 📄 Navbar.tsx      # Barra de navegação
-│   │   │   └── 📄 Footer.tsx      # Rodapé
+│   │   │   ├── 📄 Navbar.tsx      # Barra de navegação (otimizada)
+│   │   │   └── 📄 Footer.tsx      # Rodapé (otimizado)
 │   │   └── 📁 screens/      # Telas da aplicação
-│   │       ├── 📄 LoginScreen.tsx       # Tela de login
-│   │       └── 📄 CupSelectionScreen.tsx # Tela de seleção
+│   │       ├── 📄 LoginScreen.tsx       # Tela de login (otimizada)
+│   │       └── 📄 CupSelectionScreen.tsx # Tela de seleção (otimizada)
 │   │
 │   ├── 📁 hooks/             # Hooks customizados
 │   │   └── 📄 useLocalStorage.ts
 │   │
 │   ├── 📁 services/          # Serviços e APIs
-│   │   └── 📄 userService.ts       # Validação de usuários
+│   │   └── 📄 userService.ts       # Validação de usuários (code clean)
 │   │
 │   ├── 📁 types/             # Definições TypeScript
-│   │   └── 📄 index.ts             # Tipos da aplicação
+│   │   └── 📄 index.ts             # Tipos da aplicação (type safe)
 │   │
 │   ├── 📁 utils/             # Funções utilitárias
 │   │   ├── 📄 cpf.ts              # Validação/formatação CPF
@@ -161,7 +193,7 @@ ipass-copos/
 │   └── 📁 styles/            # Estilos adicionais
 │       └── 📄 globals.css         # CSS global customizado
 │
-├── 📁 public/                # Arquivos estáticos
+├── 📁 public/                # Arquivos estáticos (otimizados)
 │   ├── 🖼️ Ipass_logo.png           # Logo principal
 │   ├── 🖼️ ipass-logo.png           # Logo navbar
 │   ├── 🖼️ ipass_logo_rodape_negativa.png # Logo footer
@@ -185,12 +217,14 @@ ipass-copos/
 - **Função**: Autenticação por CPF
 - **Recursos**: Validação em tempo real, animações, logos interativas
 - **Validação**: Dígitos verificadores do CPF brasileiro
+- **Performance**: Otimizado com Next.js Image
 
 #### `CupSelectionScreen.tsx`
 - **Função**: Seleção e compra do copo
 - **Recursos**: Carrossel automático, efeitos 3D premium, partículas flutuantes
 - **Produto**: Copo oficial STL Festival 2025 com marca do gnomo 🧙‍♂️
 - **Animações**: Reflexo sincronizado, hover avançado, transições de 1s
+- **Performance**: Imagens otimizadas com lazy loading inteligente
 
 ### **🎨 Interface (UI)**
 

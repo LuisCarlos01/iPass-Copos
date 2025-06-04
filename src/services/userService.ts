@@ -37,7 +37,11 @@ export async function validateUserByCpf(cpf: string): Promise<User> {
 export function logoutUser(): void {
   // Aqui você pode adicionar lógica de logout
   // Como limpar tokens, cookies, etc.
-  console.log('Usuário deslogado');
+  
+  // TODO: Implementar lógica de logout em produção
+  // - Limpar localStorage/sessionStorage
+  // - Invalidar tokens JWT
+  // - Redirecionar para página inicial
 }
 
 // 📊 Simula busca de dados adicionais do usuário

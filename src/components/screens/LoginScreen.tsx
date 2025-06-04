@@ -83,41 +83,45 @@ export function LoginScreen({ onLogin, loading }: LoginScreenProps) {
             
             <CardContent className="relative p-8">
               <div className="text-center mb-8">
-                {/* Logo principal iPass */}
+                {/* Logo do Copo */}
                 <div className="relative mx-auto w-28 h-28 mb-8 group cursor-pointer">
-                  <div className="absolute inset-0 bg-gradient-to-br from-ipass-primary/15 to-primary-600/15 rounded-3xl blur-lg group-hover:blur-xl group-hover:from-ipass-primary/25 group-hover:to-primary-600/25 transition-all duration-500"></div>
-                  <div className="relative w-28 h-28 flex items-center justify-center p-4 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500 ease-out">
+                  <div className="absolute inset-0 bg-gradient-to-br from-ipass-primary/15 to-primary-600/15 rounded-full blur-lg group-hover:blur-xl group-hover:from-ipass-primary/25 group-hover:to-primary-600/25 transition-all duration-500"></div>
+                  <div className="relative w-28 h-28 rounded-full overflow-hidden bg-white/90 backdrop-blur-sm border-2 border-ipass-primary/20 group-hover:scale-110 group-hover:border-ipass-primary/40 transition-all duration-500 ease-out shadow-lg group-hover:shadow-xl">
                     <Image 
-                      src="/Ipass_logo.png" 
-                      alt="iPass Logo" 
+                      src="/WhatsApp Image 2025-06-03 at 17.29.50.jpeg" 
+                      alt="Copo STL Festival" 
                       width={112}
                       height={112}
-                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 ease-out"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ease-out"
                       priority
                     />
                   </div>
                 </div>
                 
-                <h1 className="text-3xl font-bold text-gray-800 mb-2">
-                  Bem-vindo
+                <h1 className="text-4xl font-extrabold mb-2 flex flex-col items-center">
+                  <span className="bg-gradient-to-r from-ipass-primary via-primary-600 to-ipass-primary bg-clip-text text-transparent">
+                    COPO STL FESTIVAL
+                  </span>
+                  <span className="block text-4xl font-extrabold bg-gradient-to-r from-primary-600 via-ipass-primary to-primary-700 bg-clip-text text-transparent mt-1">
+                    2025
+                  </span>
                 </h1>
-                <p className="text-gray-600 text-sm">
-                  Entre com seu CPF para continuar
-                </p>
+                {/* Texto informativo principal */}
+                <div className="mb-6 relative">
+                  {/* Background decorativo */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-ipass-primary/5 to-primary-600/5 rounded-2xl blur-sm"></div>
+                  
+                                    <div className="relative p-5 bg-gradient-to-br from-ipass-primary/10 to-primary-600/10 backdrop-blur-sm border border-ipass-primary/20 rounded-2xl">
+                    <p className="text-center text-gray-700 text-sm leading-relaxed font-medium max-w-xs mx-auto">
+                      Digite seu CPF abaixo e dê o primeiro passo para comprar seu copo de forma antecipada
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-                <div className="space-y-2">
-                  <label htmlFor="cpf" className="block text-sm font-semibold text-gray-700 mb-4">
-                    <div className="flex items-center space-x-3 p-3 rounded-xl bg-gray-50/80 backdrop-blur-sm border border-gray-200/50">
-                      <div className="w-8 h-8 bg-ipass-primary/10 rounded-lg flex items-center justify-center">
-                        <svg className="w-5 h-5 text-ipass-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                      </div>
-                      <span className="font-medium">Digite seu CPF</span>
-                    </div>
-                  </label>
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <div className="space-y-4">
+                  <label htmlFor="cpf" className="sr-only">CPF</label>
                   
                   <div className="relative group">
                     {/* Glow effect */}
@@ -129,7 +133,7 @@ export function LoginScreen({ onLogin, loading }: LoginScreenProps) {
                         id="cpf"
                     name="cpf"
                         type="text"
-                    placeholder="000.000.000-00"
+                    placeholder="digite seu CPF"
                     value={cpfValue}
                     onChange={handleCpfChange}
                     maxLength={14}
@@ -161,8 +165,9 @@ export function LoginScreen({ onLogin, loading }: LoginScreenProps) {
                     </div>
                   </div>
                   
-                  {errors.cpf ? (
-                    <div className="mt-3 p-3 bg-red-50/80 backdrop-blur-sm border border-red-200/50 rounded-xl flex items-center space-x-3">
+                  {/* Mensagem de erro apenas quando necessário */}
+                  {errors.cpf && (
+                    <div className="p-3 bg-red-50/80 backdrop-blur-sm border border-red-200/50 rounded-xl flex items-center space-x-3">
                       <div className="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
                         <svg className="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
@@ -170,16 +175,24 @@ export function LoginScreen({ onLogin, loading }: LoginScreenProps) {
                       </div>
                       <p className="text-sm text-red-700 font-medium">{errors.cpf.message}</p>
                     </div>
-                  ) : (
-                    <div className="mt-3 p-3 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 rounded-xl flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                        </svg>
-                      </div>
-                      <p className="text-xs text-blue-700 font-medium">Apenas números são necessários</p>
-                    </div>
                   )}
+                </div>
+
+                {/* Botão com espaçamento ajustado */}
+                <div className="pt-4">
+                  <Button
+                    type="submit"
+                    size="lg"
+                    loading={isSubmitting || loading}
+                    className="w-full bg-gradient-to-r from-ipass-primary to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:from-primary-600 focus:to-primary-700 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl focus:shadow-xl transform hover:-translate-y-0.5 focus:-translate-y-0.5 transition-all duration-300 ease-out focus:outline-none focus:ring-4 focus:ring-ipass-primary/30 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-lg"
+                  >
+                    <span className="flex items-center justify-center space-x-2">
+                      <span>Avançar</span>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </span>
+                  </Button>
                 </div>
 
                 {/* Informações sobre o STL Festival */}
@@ -189,16 +202,9 @@ export function LoginScreen({ onLogin, loading }: LoginScreenProps) {
                   
                   <div className="relative p-6 bg-gradient-to-br from-ipass-primary/10 to-primary-600/10 backdrop-blur-sm border border-ipass-primary/20 rounded-2xl">
                     
-                    {/* Título */}
-                    <h3 className="text-center text-lg font-bold text-gray-800 mb-4">
-                      🧙‍♂️ STL Festival 2025
-                    </h3>
-                    
                     {/* Texto informativo */}
                     <p className="text-center text-gray-700 text-sm leading-relaxed font-medium">
-                      Compre seu copo agora de forma antecipada e retire com facilidade dentro do{' '}
-                      <span className="text-ipass-primary font-semibold">STL Festival</span>, em nosso{' '}
-                      <span className="text-primary-600 font-semibold">stand exclusivo</span>!
+                      A retirada do copo será feita no evento, em um stand exclusivo
                     </p>
                     
                     {/* Ícones decorativos */}
@@ -219,25 +225,12 @@ export function LoginScreen({ onLogin, loading }: LoginScreenProps) {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                           </svg>
                         </div>
-                        <span className="font-medium">Retirada no Local</span>
+                        <span className="font-medium">Retirada no Evento</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <Button
-                  type="submit"
-                  size="lg"
-                  loading={isSubmitting || loading}
-                  className="w-full bg-gradient-to-r from-ipass-primary to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:from-primary-600 focus:to-primary-700 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl focus:shadow-xl transform hover:-translate-y-0.5 focus:-translate-y-0.5 transition-all duration-300 ease-out focus:outline-none focus:ring-4 focus:ring-ipass-primary/30 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-lg"
-                >
-                  <span className="flex items-center justify-center space-x-2">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-                    </svg>
-                    <span>Entrar</span>
-                  </span>
-                </Button>
               </form>
 
               {/* Termos */}

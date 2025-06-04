@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/Card';
+import Image from 'next/image';
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Navbar } from '@/components/ui/Navbar';
 import { Footer } from '@/components/ui/Footer';
@@ -17,7 +18,7 @@ interface CupSelectionScreenProps {
 const availableCup: Cup = {
   id: 'stl-2025-official-cup',
   name: 'Copo STL Festival 2025',
-  description: 'Copo oficial do STL Festival 2025 - Edição Limitada',
+  description: '',
   price: 20.00,
   image: '/images/stl-cup-2025.jpg', // Placeholder
   available: true,
@@ -73,16 +74,6 @@ export function CupSelectionScreen({ user, onSelectCup, onBack, loading }: CupSe
         </div>
         
         <div className="relative w-full max-w-2xl">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">
-            STL Festival 2025
-          </h1>
-          <p className="text-gray-600 text-sm">
-            Copo oficial disponível para retirada no evento
-          </p>
-        </div>
-
         {/* Produto Principal */}
         <Card className="bg-white/90 backdrop-blur-sm shadow-xl border border-gray-200/50 overflow-hidden">
           {/* Header decorativo */}
@@ -90,7 +81,7 @@ export function CupSelectionScreen({ user, onSelectCup, onBack, loading }: CupSe
           
           <CardContent className="!p-0">
             {/* Imagem do Produto com efeitos premium */}
-            <div className="relative bg-gradient-to-br from-ipass-primary/8 to-primary-600/8 h-96 flex items-center justify-center overflow-hidden group cursor-pointer rounded-t-3xl">
+            <div className="relative bg-gradient-to-br from-ipass-primary/8 to-primary-600/8 h-64 md:h-80 flex items-center justify-center overflow-hidden group cursor-pointer rounded-t-3xl">
               {/* Background fluido orgânico */}
               <div className="absolute inset-0 bg-gradient-to-br from-ipass-primary/15 to-primary-600/15 group-hover:from-ipass-primary/25 group-hover:to-primary-600/25 transition-all duration-700">
                 {/* Formas orgânicas de fundo */}
@@ -107,12 +98,13 @@ export function CupSelectionScreen({ user, onSelectCup, onBack, loading }: CupSe
               </div>
               
               {/* Badge premium flutuante */}
-              <div className="absolute top-6 left-1/2 transform -translate-x-1/2 z-30 group-hover:-translate-y-2 transition-transform duration-500">
-                <div className="bg-gradient-to-r from-ipass-primary via-primary-500 to-primary-600 text-white px-6 py-3 rounded-full text-sm font-bold shadow-2xl backdrop-blur-sm border border-white/30 group-hover:scale-110 group-hover:shadow-3xl group-hover:border-white/50 transition-all duration-500">
-                  <span className="flex items-center space-x-2">
-                                         <span className="animate-bounce">🧙‍♂️</span>
-                     <span>Edição Limitada STL</span>
-                     <span className="animate-pulse">✨</span>
+              <div className="absolute top-3 md:top-6 left-1/2 transform -translate-x-1/2 z-30 group-hover:-translate-y-2 transition-transform duration-500">
+                <div className="bg-gradient-to-r from-ipass-primary via-primary-500 to-primary-600 text-white px-3 py-1.5 md:px-6 md:py-3 rounded-full text-xs md:text-sm font-bold shadow-2xl backdrop-blur-sm border border-white/30 group-hover:scale-110 group-hover:shadow-3xl group-hover:border-white/50 transition-all duration-500">
+                  <span className="flex items-center space-x-1 md:space-x-2">
+                    <span className="animate-bounce text-xs">🧙‍♂️</span>
+                    <span className="hidden sm:inline">Edição Limitada STL</span>
+                    <span className="sm:hidden">Ed. Limitada</span>
+                    <span className="animate-pulse text-xs">✨</span>
                   </span>
                 </div>
               </div>
@@ -123,24 +115,27 @@ export function CupSelectionScreen({ user, onSelectCup, onBack, loading }: CupSe
                 <div className="absolute -inset-8 bg-gradient-to-r from-ipass-primary/20 via-primary-500/20 to-primary-600/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                 
                 {/* Moldura orgânica da imagem */}
-                <div className="relative p-4">
-                  <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl group-hover:shadow-3xl group-hover:bg-white/90 transition-all duration-700">
+                <div className="relative p-2 md:p-4">
+                  <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-4 md:p-8 shadow-2xl group-hover:shadow-3xl group-hover:bg-white/90 transition-all duration-700">
                     {/* Borda gradiente interna */}
                     <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-ipass-primary/20 via-transparent to-primary-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                     
                     {/* Carrossel de imagens */}
                     <div className="relative group overflow-hidden">
-                      <div className="relative w-64 h-64">
+                      <div className="relative w-48 h-48 md:w-56 md:h-56">
                         {cupImages.map((image, index) => (
-                          <img
+                          <Image
                             key={index}
                             src={image}
                             alt={`Copo STL Festival 2025 - Imagem ${index + 1}`}
+                            width={224}
+                            height={224}
                             className={`absolute inset-0 w-full h-full object-contain rounded-2xl shadow-xl transition-all duration-1000 filter group-hover:brightness-110 group-hover:contrast-110 group-hover:saturate-110 ${
                               index === currentImageIndex 
                                 ? 'opacity-100 scale-100 rotate-0' 
                                 : 'opacity-0 scale-95 rotate-2'
                             }`}
+                            priority={index === 0}
                           />
                         ))}
                       </div>
@@ -169,10 +164,12 @@ export function CupSelectionScreen({ user, onSelectCup, onBack, loading }: CupSe
                 <div className="absolute inset-x-0 -bottom-4 h-16 opacity-20 group-hover:opacity-30 transition-opacity duration-700">
                   <div className="relative w-full h-full overflow-hidden rounded-b-3xl">
                     {cupImages.map((image, index) => (
-                      <img 
+                      <Image 
                         key={index}
                         src={image} 
                         alt={`Reflexo do copo - Imagem ${index + 1}`}
+                        width={224}
+                        height={128}
                         className={`absolute inset-0 w-full h-32 object-contain object-top transform scale-y-[-1] filter blur-sm opacity-40 transition-all duration-1000 ${
                           index === currentImageIndex ? 'opacity-40' : 'opacity-0'
                         }`}
@@ -204,17 +201,14 @@ export function CupSelectionScreen({ user, onSelectCup, onBack, loading }: CupSe
             <div className="p-6">
               <CardHeader className="!mb-4 !p-0">
                 <CardTitle className="text-xl">{availableCup.name}</CardTitle>
-                <CardDescription className="text-base">
-                  {availableCup.description}
-                </CardDescription>
               </CardHeader>
 
               {/* Preço */}
               <div className="flex items-baseline space-x-2 mb-6">
-                <span className="text-3xl font-bold text-primary-600">
+                <span className="text-2xl font-bold text-primary-600">
                   {formatCurrency(availableCup.price)}
                 </span>
-                <span className="text-sm text-gray-500">por unidade</span>
+                <span className="text-xs text-gray-400">por unidade</span>
               </div>
 
               {/* Seletor de Quantidade */}
@@ -249,69 +243,31 @@ export function CupSelectionScreen({ user, onSelectCup, onBack, loading }: CupSe
                     </svg>
                   </Button>
                 </div>
-                <p className="text-xs text-gray-500 mt-1">
-                  Máximo 5 copos por CPF
-                </p>
               </div>
 
-              {/* Total */}
-              {selectedQuantity > 1 && (
-                <div className="bg-gray-50 rounded-lg p-4 mb-6">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600">
-                      {selectedQuantity}x {availableCup.name}
-                    </span>
-                    <span className="text-lg font-semibold text-primary-600">
-                      {formatCurrency(totalPrice)}
-                    </span>
-                  </div>
-                </div>
-              )}
-
-              {/* Informações Importantes - ATENÇÃO */}
-              <div className="mt-6 pt-6 border-t-2 border-ipass-primary/30">
-                {/* Background com destaque */}
-                <div className="relative bg-gradient-to-br from-ipass-primary/5 to-primary-600/5 rounded-2xl p-6 border-2 border-ipass-primary/20 shadow-lg">
-                  {/* Efeito de brilho no fundo */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-ipass-primary/5 to-transparent rounded-2xl"></div>
-                  
-                  {/* Ícone de atenção destacado */}
-                  <div className="relative flex items-center justify-center mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-ipass-primary to-primary-600 rounded-2xl flex items-center justify-center shadow-xl">
-                      <svg className="w-8 h-8 text-white animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.726-.833-2.464 0L4.34 16.5c-.77.833.192 2.5 1.732 2.5z" />
-                      </svg>
-                    </div>
-                  </div>
-                  
-                  {/* Título chamativo */}
-                  <h3 className="text-center text-xl font-bold text-gray-800 mb-6 flex items-center justify-center space-x-3">
-                    <span className="text-2xl animate-bounce">⚠️</span>
-                    <span className="text-ipass-primary">ATENÇÃO</span>
-                    <span className="text-2xl animate-bounce" style={{animationDelay: '0.5s'}}>⚠️</span>
-                  </h3>
-                  
-                                     {/* Texto principal destacado */}
-                   <div className="relative bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-ipass-primary/30 shadow-inner">
-                     <div className="text-center">
-                       <p className="text-base font-semibold text-gray-800 leading-relaxed">
-                         No dia do <span className="text-ipass-primary font-bold">STL Festival</span>, apresente o <span className="bg-green-100 text-green-800 px-2 py-1 rounded-lg font-bold">QR Code</span> gerado no seu app <span className="text-ipass-primary font-bold">iPass</span>, na aba <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-lg font-bold">'Ingressos'</span>, no nosso <span className="text-primary-600 font-bold">stand exclusivo</span> para retirar seu copo.
-                       </p>
-                     </div>
-                   </div>
+              {/* Total - Sempre visível com destaque */}
+              <div className="bg-gradient-to-r from-ipass-primary/10 to-primary-600/10 border-2 border-ipass-primary/20 rounded-xl p-5 shadow-lg">
+                <div className="flex justify-between items-center">
+                  <span className="text-base font-semibold text-gray-800">
+                    {selectedQuantity}x {availableCup.name}
+                  </span>
+                  <span className="text-2xl font-bold text-primary-600">
+                    {formatCurrency(totalPrice)}
+                  </span>
                 </div>
               </div>
+
             </div>
           </CardContent>
 
-          <CardFooter className="flex-col space-y-3">
+          <CardFooter className="flex-col space-y-3 pt-3">
             <Button
               onClick={handleSelectCup}
               loading={isSelecting || loading}
               size="lg"
               className="w-full"
             >
-              {isSelecting || loading ? 'Selecionando...' : `Finalizar compra com ${formatCurrency(totalPrice)}`}
+              {isSelecting || loading ? 'Selecionando...' : 'Finalizar compra'}
             </Button>
             
             <Button
