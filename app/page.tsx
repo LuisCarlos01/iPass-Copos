@@ -120,12 +120,7 @@ export default function HomePage() {
       {/* Renderizar a tela atual */}
       {renderScreen()}
 
-      {/* Debug info (remover em produção) */}
-      {process.env.NODE_ENV === 'development' && (
-        <div className="fixed bottom-4 left-4 bg-black/80 text-white px-3 py-2 rounded text-xs font-mono">
-          Step: {app.step} | User: {app.user?.cpf || 'none'} | Cup: {app.selectedCup?.name || 'none'}
-        </div>
-      )}
+
     </main>
   );
 } 

@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 export function Footer() {
   // Handlers para redes sociais
@@ -49,9 +50,11 @@ export function Footer() {
           {/* Sobre o iPass */}
           <div className="space-y-4">
             <div className="flex items-center">
-              <img 
+              <Image 
                 src="/ipass_logo_rodape_negativa.png" 
                 alt="iPass Logo" 
+                width={120}
+                height={64}
                 className="h-16 w-auto object-contain"
               />
             </div>

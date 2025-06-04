@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface NavbarProps {
   userName?: string;
@@ -46,10 +47,13 @@ export function Navbar({ userName, isLoggedIn = false }: NavbarProps) {
             onClick={handleLogoClick}
             title="Clique para recarregar a página"
           >
-            <img 
+            <Image 
               src="/ipass_logo_rodape_negativa.png" 
               alt="iPass!" 
+              width={120}
+              height={40}
               className="h-10 w-auto max-w-[120px] object-contain group-hover:scale-105 group-active:scale-95 transition-transform duration-200"
+              priority
             />
           </button>
         </div>
