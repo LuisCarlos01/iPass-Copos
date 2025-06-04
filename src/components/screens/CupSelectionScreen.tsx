@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Navbar } from '@/components/ui/Navbar';
@@ -23,9 +23,26 @@ const availableCup: Cup = {
   available: true,
 };
 
+// Array de imagens para o carrossel
+const cupImages = [
+  '/WhatsApp Image 2025-06-03 at 17.29.50.jpeg',
+  '/copoex.jpeg',
+  '/copos de exemplo.jpeg',
+];
+
 export function CupSelectionScreen({ user, onSelectCup, onBack, loading }: CupSelectionScreenProps) {
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [isSelecting, setIsSelecting] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Carrossel automático
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % cupImages.length);
+    }, 3000); // Troca imagem a cada 3 segundos
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSelectCup = async () => {
     setIsSelecting(true);
@@ -58,37 +75,12 @@ export function CupSelectionScreen({ user, onSelectCup, onBack, loading }: CupSe
         <div className="relative w-full max-w-2xl">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="relative mx-auto w-20 h-20 mb-6">
-            <div className="absolute inset-0 bg-gradient-to-br from-ipass-primary/15 to-primary-600/15 rounded-3xl blur-lg"></div>
-            <div className="relative w-20 h-20 bg-gradient-to-br from-ipass-primary to-primary-600 rounded-2xl flex items-center justify-center shadow-lg">
-              <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-              </svg>
-            </div>
-          </div>
           <h1 className="text-3xl font-bold text-gray-800 mb-2">
-            Selecione seu Copo
+            STL Festival 2025
           </h1>
           <p className="text-gray-600 text-sm">
             Copo oficial disponível para retirada no evento
           </p>
-        </div>
-
-        {/* Status do Usuário */}
-        <div className="mb-6 p-4 bg-green-50/80 backdrop-blur-sm border border-green-200/50 rounded-xl flex items-center space-x-3">
-          <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-            <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div>
-            <p className="text-sm font-semibold text-green-800">
-              Ingresso Verificado ✓
-            </p>
-            <p className="text-xs text-green-600 font-medium">
-              CPF: {user.cpf} • Você pode adquirir o copo oficial
-            </p>
-          </div>
         </div>
 
         {/* Produto Principal */}
@@ -97,68 +89,115 @@ export function CupSelectionScreen({ user, onSelectCup, onBack, loading }: CupSe
           <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-ipass-primary to-primary-600"></div>
           
           <CardContent className="!p-0">
-            {/* Imagem do Produto com efeitos avançados */}
-            <div className="relative bg-gradient-to-br from-ipass-primary/8 to-primary-600/8 rounded-t-xl h-96 flex items-center justify-center overflow-hidden group cursor-pointer">
-              {/* Background espelhado/reflexo */}
+            {/* Imagem do Produto com efeitos premium */}
+            <div className="relative bg-gradient-to-br from-ipass-primary/8 to-primary-600/8 h-96 flex items-center justify-center overflow-hidden group cursor-pointer rounded-t-3xl">
+              {/* Background fluido orgânico */}
               <div className="absolute inset-0 bg-gradient-to-br from-ipass-primary/15 to-primary-600/15 group-hover:from-ipass-primary/25 group-hover:to-primary-600/25 transition-all duration-700">
-                {/* Efeito espelhado */}
-                <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-white/30 to-transparent opacity-50"></div>
-                <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-gray-100/40 to-transparent"></div>
+                {/* Formas orgânicas de fundo */}
+                <div className="absolute inset-0">
+                  <div className="absolute top-0 left-0 w-full h-full opacity-30">
+                    <div className="absolute top-10 left-10 w-32 h-32 bg-ipass-primary/20 rounded-full blur-3xl transform rotate-45 group-hover:rotate-90 transition-transform duration-[2000ms] ease-out"></div>
+                    <div className="absolute bottom-10 right-10 w-40 h-24 bg-primary-600/15 rounded-full blur-2xl transform -rotate-12 group-hover:rotate-12 transition-transform duration-[1500ms] ease-out"></div>
+                    <div className="absolute top-1/3 right-1/4 w-20 h-20 bg-ipass-primary/25 rounded-full blur-xl group-hover:scale-150 transition-transform duration-1000"></div>
+                  </div>
+                </div>
+                
+                {/* Gradiente de reflexo orgânico */}
+                <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-white/20 via-white/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-700"></div>
               </div>
               
-              {/* Círculos decorativos de fundo */}
-              <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-500">
-                <div className="absolute top-10 left-10 w-32 h-32 bg-ipass-primary/20 rounded-full blur-2xl animate-pulse"></div>
-                <div className="absolute bottom-10 right-10 w-24 h-24 bg-primary-600/20 rounded-full blur-xl animate-pulse delay-1000"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-gradient-to-r from-ipass-primary/10 to-primary-600/10 rounded-full blur-3xl"></div>
-              </div>
-              
-              {/* Badge flutuante - MOVIDO PARA CIMA DA IMAGEM */}
-              <div className="absolute top-6 left-1/2 transform -translate-x-1/2 z-30">
-                <div className="bg-gradient-to-r from-ipass-primary via-primary-500 to-primary-600 text-white px-6 py-3 rounded-full text-sm font-bold shadow-2xl backdrop-blur-sm border border-white/20 group-hover:scale-105 group-hover:shadow-3xl transition-all duration-500">
+              {/* Badge premium flutuante */}
+              <div className="absolute top-6 left-1/2 transform -translate-x-1/2 z-30 group-hover:-translate-y-2 transition-transform duration-500">
+                <div className="bg-gradient-to-r from-ipass-primary via-primary-500 to-primary-600 text-white px-6 py-3 rounded-full text-sm font-bold shadow-2xl backdrop-blur-sm border border-white/30 group-hover:scale-110 group-hover:shadow-3xl group-hover:border-white/50 transition-all duration-500">
                   <span className="flex items-center space-x-2">
-                    <span>🧙‍♂️</span>
-                    <span>Edição Limitada STL</span>
-                    <span>✨</span>
+                                         <span className="animate-bounce">🧙‍♂️</span>
+                     <span>Edição Limitada STL</span>
+                     <span className="animate-pulse">✨</span>
                   </span>
                 </div>
               </div>
               
-              {/* Container da imagem com efeitos aprimorados */}
-              <div className="relative z-20 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-700 ease-out transform perspective-1000">
-                {/* Sombra projetada da imagem */}
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-400/20 to-gray-600/40 rounded-lg blur-xl transform translate-y-8 scale-95 group-hover:scale-105 transition-all duration-700"></div>
+              {/* Container da imagem principal aprimorado */}
+              <div className="relative z-20 group-hover:scale-105 group-hover:rotate-2 transition-all duration-700 ease-out">
+                {/* Aura luminosa da imagem */}
+                <div className="absolute -inset-8 bg-gradient-to-r from-ipass-primary/20 via-primary-500/20 to-primary-600/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                 
-                {/* Imagem principal */}
-                <div className="relative">
-                  <img 
-                    src="/WhatsApp Image 2025-06-03 at 17.29.50.jpeg" 
-                    alt="Copo STL Festival 2025" 
-                    className="w-72 h-72 object-contain drop-shadow-2xl group-hover:drop-shadow-[0_25px_35px_rgba(0,0,0,0.25)] transition-all duration-700 filter group-hover:brightness-110 group-hover:contrast-110"
-                  />
-                  
-                  {/* Reflexo da imagem */}
-                  <div className="absolute inset-x-0 -bottom-8 h-24 opacity-30 group-hover:opacity-40 transition-opacity duration-500">
-                    <img 
-                      src="/WhatsApp Image 2025-06-03 at 17.29.50.jpeg" 
-                      alt="Reflexo do copo" 
-                      className="w-72 h-24 object-contain object-top transform scale-y-[-1] filter blur-sm opacity-60"
-                      style={{ maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%)' }}
-                    />
+                {/* Moldura orgânica da imagem */}
+                <div className="relative p-4">
+                  <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl group-hover:shadow-3xl group-hover:bg-white/90 transition-all duration-700">
+                    {/* Borda gradiente interna */}
+                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-ipass-primary/20 via-transparent to-primary-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    
+                    {/* Carrossel de imagens */}
+                    <div className="relative group overflow-hidden">
+                      <div className="relative w-64 h-64">
+                        {cupImages.map((image, index) => (
+                          <img
+                            key={index}
+                            src={image}
+                            alt={`Copo STL Festival 2025 - Imagem ${index + 1}`}
+                            className={`absolute inset-0 w-full h-full object-contain rounded-2xl shadow-xl transition-all duration-1000 filter group-hover:brightness-110 group-hover:contrast-110 group-hover:saturate-110 ${
+                              index === currentImageIndex 
+                                ? 'opacity-100 scale-100 rotate-0' 
+                                : 'opacity-0 scale-95 rotate-2'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                      
+                      {/* Indicadores do carrossel */}
+                      <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                        {cupImages.map((_, index) => (
+                          <div
+                            key={index}
+                            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                              index === currentImageIndex 
+                                ? 'bg-ipass-primary scale-125' 
+                                : 'bg-gray-300 hover:bg-gray-400'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                      
+                      {/* Overlay suave */}
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-transparent via-transparent to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Reflexo premium da imagem (carrossel) */}
+                <div className="absolute inset-x-0 -bottom-4 h-16 opacity-20 group-hover:opacity-30 transition-opacity duration-700">
+                  <div className="relative w-full h-full overflow-hidden rounded-b-3xl">
+                    {cupImages.map((image, index) => (
+                      <img 
+                        key={index}
+                        src={image} 
+                        alt={`Reflexo do copo - Imagem ${index + 1}`}
+                        className={`absolute inset-0 w-full h-32 object-contain object-top transform scale-y-[-1] filter blur-sm opacity-40 transition-all duration-1000 ${
+                          index === currentImageIndex ? 'opacity-40' : 'opacity-0'
+                        }`}
+                        style={{ 
+                          maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 80%)',
+                          WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 80%)'
+                        }}
+                      />
+                    ))}
                   </div>
                 </div>
               </div>
               
-              {/* Efeitos de luz dinâmicos */}
-              <div className="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-700">
-                <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-gradient-to-r from-ipass-primary to-primary-600 rounded-full animate-ping"></div>
-                <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-gradient-to-r from-primary-400 to-ipass-primary rounded-full animate-pulse delay-300"></div>
-                <div className="absolute bottom-1/3 left-1/3 w-2.5 h-2.5 bg-gradient-to-r from-ipass-primary to-primary-500 rounded-full animate-bounce delay-700"></div>
-                <div className="absolute bottom-1/4 right-1/4 w-1.5 h-1.5 bg-gradient-to-r from-primary-600 to-ipass-primary rounded-full animate-pulse delay-1000"></div>
+              {/* Partículas flutuantes premium */}
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-ipass-primary/60 rounded-full animate-float opacity-50 group-hover:opacity-100"></div>
+                <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-primary-500/60 rounded-full animate-float-delay opacity-50 group-hover:opacity-100" style={{animationDelay: '0.5s'}}></div>
+                <div className="absolute bottom-1/3 left-1/3 w-2.5 h-2.5 bg-primary-600/60 rounded-full animate-float-slow opacity-50 group-hover:opacity-100"></div>
+                <div className="absolute bottom-1/4 right-1/4 w-1 h-1 bg-ipass-primary/80 rounded-full animate-float-delay opacity-50 group-hover:opacity-100" style={{animationDelay: '1s'}}></div>
               </div>
               
-              {/* Brilho de destaque */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+              {/* Brilho dinâmico premium */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-[1500ms] ease-out"></div>
+              </div>
             </div>
 
             {/* Informações do Produto */}
@@ -228,6 +267,40 @@ export function CupSelectionScreen({ user, onSelectCup, onBack, loading }: CupSe
                   </div>
                 </div>
               )}
+
+              {/* Informações Importantes - ATENÇÃO */}
+              <div className="mt-6 pt-6 border-t-2 border-ipass-primary/30">
+                {/* Background com destaque */}
+                <div className="relative bg-gradient-to-br from-ipass-primary/5 to-primary-600/5 rounded-2xl p-6 border-2 border-ipass-primary/20 shadow-lg">
+                  {/* Efeito de brilho no fundo */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-ipass-primary/5 to-transparent rounded-2xl"></div>
+                  
+                  {/* Ícone de atenção destacado */}
+                  <div className="relative flex items-center justify-center mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-ipass-primary to-primary-600 rounded-2xl flex items-center justify-center shadow-xl">
+                      <svg className="w-8 h-8 text-white animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.726-.833-2.464 0L4.34 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                      </svg>
+                    </div>
+                  </div>
+                  
+                  {/* Título chamativo */}
+                  <h3 className="text-center text-xl font-bold text-gray-800 mb-6 flex items-center justify-center space-x-3">
+                    <span className="text-2xl animate-bounce">⚠️</span>
+                    <span className="text-ipass-primary">ATENÇÃO</span>
+                    <span className="text-2xl animate-bounce" style={{animationDelay: '0.5s'}}>⚠️</span>
+                  </h3>
+                  
+                                     {/* Texto principal destacado */}
+                   <div className="relative bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-ipass-primary/30 shadow-inner">
+                     <div className="text-center">
+                       <p className="text-base font-semibold text-gray-800 leading-relaxed">
+                         No dia do <span className="text-ipass-primary font-bold">STL Festival</span>, apresente o <span className="bg-green-100 text-green-800 px-2 py-1 rounded-lg font-bold">QR Code</span> gerado no seu app <span className="text-ipass-primary font-bold">iPass</span>, na aba <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-lg font-bold">'Ingressos'</span>, no nosso <span className="text-primary-600 font-bold">stand exclusivo</span> para retirar seu copo.
+                       </p>
+                     </div>
+                   </div>
+                </div>
+              </div>
             </div>
           </CardContent>
 
@@ -251,67 +324,6 @@ export function CupSelectionScreen({ user, onSelectCup, onBack, loading }: CupSe
             </Button>
           </CardFooter>
         </Card>
-
-        {/* Informações Importantes */}
-        <div className="mt-8 relative">
-          {/* Background decorativo */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-primary-600/5 rounded-2xl blur-sm"></div>
-          
-          <div className="relative p-6 bg-gradient-to-br from-blue-500/10 to-primary-600/10 backdrop-blur-sm border border-blue-500/20 rounded-2xl">
-            {/* Ícone informativo */}
-            <div className="flex items-center justify-center mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-            </div>
-            
-            {/* Título */}
-            <h3 className="text-center text-lg font-bold text-gray-800 mb-4">
-              📋 Informações Importantes
-            </h3>
-            
-            {/* Lista de informações */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <div className="flex items-center space-x-3 text-sm text-gray-700">
-                <div className="w-6 h-6 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg className="w-3 h-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  </svg>
-                </div>
-                <span className="font-medium">Retirada no local do evento</span>
-              </div>
-              
-              <div className="flex items-center space-x-3 text-sm text-gray-700">
-                <div className="w-6 h-6 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg className="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <span className="font-medium">Apresente o QR Code iPass</span>
-              </div>
-              
-              <div className="flex items-center space-x-3 text-sm text-gray-700">
-                <div className="w-6 h-6 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg className="w-3 h-3 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                </div>
-                <span className="font-medium">Pagamento somente via Pix</span>
-              </div>
-              
-              <div className="flex items-center space-x-3 text-sm text-gray-700">
-                <div className="w-6 h-6 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg className="w-3 h-3 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <span className="font-medium">Sujeito à disponibilidade</span>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
       </main>
       
