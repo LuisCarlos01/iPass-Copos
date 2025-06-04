@@ -1,6 +1,6 @@
 {
   "name": "ipass-copos",
-  "version": "1.1.0",
+  "version": "1.3.0",
   "description": "Sistema de venda de copos oficiais STL FESTIVAL 2025",
   "private": true,
   "scripts": {

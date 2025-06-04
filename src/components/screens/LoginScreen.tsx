@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Navbar } from '@/components/ui/Navbar';
@@ -86,10 +87,13 @@ export function LoginScreen({ onLogin, loading }: LoginScreenProps) {
                 <div className="relative mx-auto w-28 h-28 mb-8 group cursor-pointer">
                   <div className="absolute inset-0 bg-gradient-to-br from-ipass-primary/15 to-primary-600/15 rounded-3xl blur-lg group-hover:blur-xl group-hover:from-ipass-primary/25 group-hover:to-primary-600/25 transition-all duration-500"></div>
                   <div className="relative w-28 h-28 flex items-center justify-center p-4 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500 ease-out">
-                    <img 
+                    <Image 
                       src="/Ipass_logo.png" 
                       alt="iPass Logo" 
+                      width={112}
+                      height={112}
                       className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 ease-out"
+                      priority
                     />
                   </div>
                 </div>
