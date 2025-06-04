@@ -1,6 +1,6 @@
 # 🎪 iPass Copos - STL Festival 2025
 
-![Version](https://img.shields.io/badge/version-1.1.1-blue)
+![Version](https://img.shields.io/badge/version-1.2.0-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=next.js&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
@@ -41,10 +41,13 @@ O **iPass Copos** é uma aplicação web moderna desenvolvida para o **STL Festi
 - ✅ Verificação de ingresso no banco de dados
 
 ### 🏆 **Seleção de Produto**
-- ✅ Visualização do copo oficial STL 2025
-- ✅ Imagem real do produto com efeitos 3D
+- ✅ **Carrossel automático** com 3 imagens do produto
+- ✅ **Efeitos visuais premium** - bordas orgânicas e hover 3D
+- ✅ **Partículas flutuantes** com animações customizadas
+- ✅ **Reflexo sincronizado** com máscara gradiente
 - ✅ Controle de quantidade (máximo 5 por CPF)
 - ✅ Cálculo automático de total
+- ✅ **Marca oficial do gnomo** 🧙‍♂️ como identidade STL
 
 ### 💳 **Sistema de Pagamento**
 - ✅ Integração com Pix
@@ -53,7 +56,11 @@ O **iPass Copos** é uma aplicação web moderna desenvolvida para o **STL Festi
 - ✅ Confirmação de pagamento
 
 ### 🎨 **Interface Premium**
-- ✅ Efeitos de hover e animações suaves
+- ✅ **Carrossel automático** - rotação de imagens a cada 3 segundos
+- ✅ **Efeitos hover avançados** - aura luminosa, rotação e escala
+- ✅ **Partículas flutuantes** com animações CSS personalizadas
+- ✅ **Reflexo dinâmico** sincronizado com imagem atual
+- ✅ **Bordas orgânicas** com `rounded-3xl` e moldura premium
 - ✅ Background patterns dinâmicos
 - ✅ Componentes com glassmorphism
 - ✅ Feedback visual em todas as interações
@@ -158,7 +165,9 @@ ipass-copos/
 │   ├── 🖼️ Ipass_logo.png           # Logo principal
 │   ├── 🖼️ ipass-logo.png           # Logo navbar
 │   ├── 🖼️ ipass_logo_rodape_negativa.png # Logo footer
-│   └── 🖼️ WhatsApp Image 2025-06-03... # Imagem do copo
+│   ├── 🖼️ WhatsApp Image 2025-06-03... # Imagem do copo 1
+│   ├── 🖼️ copoex.jpeg              # Imagem do copo 2 (carrossel)
+│   └── 🖼️ copos de exemplo.jpeg    # Imagem do copo 3 (carrossel)
 │
 ├── 📄 package.json           # Dependências e scripts
 ├── 📄 tsconfig.json          # Configuração TypeScript
@@ -179,8 +188,9 @@ ipass-copos/
 
 #### `CupSelectionScreen.tsx`
 - **Função**: Seleção e compra do copo
-- **Recursos**: Imagem 3D, efeitos hover, controle de quantidade
-- **Produto**: Copo oficial STL Festival 2025
+- **Recursos**: Carrossel automático, efeitos 3D premium, partículas flutuantes
+- **Produto**: Copo oficial STL Festival 2025 com marca do gnomo 🧙‍♂️
+- **Animações**: Reflexo sincronizado, hover avançado, transições de 1s
 
 ### **🎨 Interface (UI)**
 
@@ -282,6 +292,27 @@ text-xs: 0.75rem;      /* Legendas */
 - **Sombras**: `shadow-xl`, `drop-shadow-2xl`
 - **Animações**: `transition-all duration-500`
 
+### **🎭 Animações Customizadas**
+
+```css
+/* Partículas flutuantes */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+/* Classes disponíveis */
+.animate-float         /* Base - 6s infinito */
+.animate-float-delay   /* Com delay de 2s */
+.animate-float-slow    /* Duração de 8s */
+```
+
+**Aplicações:**
+- **Carrossel automático**: Transições suaves de 1s
+- **Hover avançado**: Aura luminosa + rotação + escala
+- **Reflexo dinâmico**: Sincronizado com imagem atual
+- **Partículas**: Movimento flutuante contínuo
+
 ## 📸 **Screenshots**
 
 ### 🔐 **Tela de Login**
@@ -291,8 +322,12 @@ text-xs: 0.75rem;      /* Legendas */
 - ✅ Links para termos e políticas
 
 ### 🏆 **Tela de Seleção**
-- ✅ Imagem real do copo com efeitos 3D
-- ✅ Badge "Edição Limitada STL" sobre a imagem
+- ✅ **Carrossel automático** com 3 imagens do produto
+- ✅ **Efeitos 3D premium** - bordas orgânicas e hover avançado
+- ✅ **Partículas flutuantes** animadas continuamente
+- ✅ **Reflexo dinâmico** sincronizado com carrossel
+- ✅ **Badge "Edição Limitada STL"** com gnomo 🧙‍♂️ animado
+- ✅ **Seção informativa** redesenhada com destaque visual
 - ✅ Controle de quantidade intuitivo
 - ✅ Informações organizadas em grid
 
@@ -427,7 +462,7 @@ Este projeto está sob a licença **MIT**. Consulte o arquivo [LICENSE](LICENSE)
 
 **🎪 STL Festival 2025 - Transformando experiências através da tecnologia**
 
-[![Versão](https://img.shields.io/badge/Versão-1.1.0-success)](https://github.com/seu-usuario/iPass-Copos)
+[![Versão](https://img.shields.io/badge/Versão-1.2.0-success)](https://github.com/seu-usuario/iPass-Copos)
 [![Status](https://img.shields.io/badge/Status-Ativo-brightgreen)](https://github.com/seu-usuario/iPass-Copos)
 [![Licença](https://img.shields.io/badge/Licença-MIT-blue)](LICENSE)
 
