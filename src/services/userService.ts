@@ -11,7 +11,6 @@ const mockUsers: Record<string, { name: string; hasTicket: boolean }> = {
   // Adicione mais CPFs conforme necessário
 };
 
-// 🔄 Função auxiliar para retry de requisições
 async function fetchWithRetry(url: string, options: RequestInit, retries = RETRY_CONFIG.MAX_RETRIES): Promise<Response> {
   try {
     const response = await fetch(url, options);

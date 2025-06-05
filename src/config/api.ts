@@ -1,5 +1,3 @@
-// 🌐 Configurações da API
-
 export const API_CONFIG = {
   BASE_URL: 'http://localhost:3000',
   EVENT_ID: '674f5d2c12fc50c91aceb0bb',
